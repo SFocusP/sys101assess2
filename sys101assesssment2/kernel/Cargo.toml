@@ -4,44 +4,22 @@ version = "0.1.0"
 edition = "2021"
 autobins = false
 
-[features]
-
-
 [dependencies]
-# The alloc crate is part of the Rust standard library; specifying features or a version is not typically required.
 alloc = {}
-
-build = "0.1.0"
-
-# Keyboard input handling.
 pc-keyboard = "0.5.0"
-
-# Serial port access for debugging and logging.
 uart_16550 = "0.2.3"
-
-# Provides spinlock implementations for synchronization.
 spin = "0.5.2"
-
-# Access to volatile memory.
 volatile = "0.2.6"
-
-# Support for lazily evaluated statics, useful in `#[no_std]` for initializing resources.
 lazy_static = "1.4.0"
 
-# Bootloader configuration for creating a bootable kernel image.
 [dependencies.bootloader]
 version = "0.11"
 features = ["map_physical_memory"]
 
 [build-dependencies]
-# Used for creating a bootable image of the kernel, typically for testing or running in an emulator.
 bootimage = "0.10.3"
 
 [profile.release]
-# Optimizations for release builds. Adjust these flags for your specific needs.
 codegen-units = 1
-opt-level = "z" # Optimize for size. Use "3" for speed optimizations.
-lto = true # Enables Link Time Optimization for better optimization.
-
-# Custom build script to compile assembly files or perform additional build-time tasks.
-build = "build.rs"
+opt-level = "z"
+lto = true
